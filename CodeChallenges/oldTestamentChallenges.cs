@@ -5,76 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeWarsScratchPaper
+namespace CodeChallenges
 {
-    class Program
+    class oldTestamentChallenges
     {
         public static Dictionary<ulong, ulong> fibTable = new Dictionary<ulong, ulong> { [0] = 0, [1] = 1 };
         public static Dictionary<int, int> indexJumps = new Dictionary<int, int> { };
-        static void Main(string[] args)
-        {
-
-
-            //string[] newDirection = dirReduc(new string[] { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" });
-            //Console.WriteLine(newDirection.ToString());
-            //Console.WriteLine(IsValid("[]"));
-            //List<char> chars = new List<char> { 'A', 'B', 'C', 'D', 'E' };
-            //Random rand = new Random();
-            //int removalIndex = rand.Next(0, chars.Count);
-            //chars.RemoveAt(removalIndex);
-            //Console.WriteLine(IsIsogram("shoubadiy"));
-            //Console.WriteLine(DuplicateCount("snoooppy112"));
-            //Console.WriteLine(Solution("abc", "bc"));
-            //Console.WriteLine(Rot13("A,.6zZn"));
-            //Console.WriteLine(HighAndLow("4 5 -1 4"));
-            //Console.WriteLine(CountSmileys(new string[] { ":)", ";-D", ":(" }));
-            //new int[] { 121, 144, 19, 161, 19, 144, 19, 11 }, new int[] { 121, 14641, 20736, 361, 25921, 361, 20736, 361 }
-            //Console.WriteLine(comp(new int[] { 2, 3, 3 }, new int[] { 9, 4, 4 }));
-            //var two = Fib(2);
-            //var eight = Fib(8);
-            //var nine = Fib(9);
-            //var thing = productFib(714);
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Console.WriteLine(TitleCase("aBc dEf gHi", null));
-            stopwatch.Stop();
-            Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
-            Console.Read();
-        }
-
-
-        // First argument is title to convert to 'title case'. Second argument is string of words separated by commas,
-        // each of which should not be capitalized unless it's the first word of the title.
-        public static string TitleCase(string title, string minorWords = "")
-        {
-            string titleString = title.ToLower();
-            string[] minorWordsArray = minorWords != null && minorWords.Length > 0 ? 
-                minorWords.ToLower().Trim().Split(' ') : new string[0];
-            string[] titleWords = titleString.Split(' ');
-            for (int i = 0; i < titleWords.Length; i++)
-            {
-                if (titleWords[i].Length < 1) continue;
-                if (!minorWordsArray.Contains(titleWords[i]) || i == 0)
-                {
-                    char firstLetter = titleWords[i][0];
-                    firstLetter = Char.ToUpper(firstLetter);
-                    char[] charArray = titleWords[i].ToCharArray();
-                    charArray[0] = firstLetter;
-                    titleWords[i] = String.Join("", charArray);
-                }
-            }
-
-            return string.Join(" ", titleWords);
-        }
-
+       
         public static ulong Fib(ulong n)
         {
             if (n <= 1) return n;
-            if(!fibTable.ContainsKey(n -1))
+            if (!fibTable.ContainsKey(n - 1))
                 fibTable.Add(n - 1, Fib(n - 1));
             return fibTable[n - 1] + fibTable[n - 2];
         }
-     
+
 
         public static ulong[] productFib(ulong prod)
         {
@@ -105,7 +50,7 @@ namespace CodeWarsScratchPaper
                     return false;
                 aList.Remove(bSqrt);
             }
-                
+
             return true;
         }
 
@@ -138,11 +83,12 @@ namespace CodeWarsScratchPaper
 
             //A = 65, Z = 90
             //a = 97, z = 122
-            foreach (var character in message) {
+            foreach (var character in message)
+            {
                 if (Char.IsLetter(character))
                 {
                     int firstLetter = 97;
-                    if (character <= 90)             
+                    if (character <= 90)
                         firstLetter = 65;
                     if (character >= firstLetter + 13)
                         newString.Append((char)(character - (firstLetter + 25) + (firstLetter - 1) + 13));
@@ -151,7 +97,7 @@ namespace CodeWarsScratchPaper
                 }
                 else
                     newString.Append(character);
-             }
+            }
 
 
             return newString.ToString();
@@ -177,7 +123,7 @@ namespace CodeWarsScratchPaper
         public static bool IsIsogram(string str)
         {
             HashSet<char> letterSet = new HashSet<char>();
-            foreach(char character in str)
+            foreach (char character in str)
             {
                 bool successfullyAdded = letterSet.Add(Char.ToUpper(character));
                 if (!successfullyAdded) return false;
