@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CodeChallenges
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
