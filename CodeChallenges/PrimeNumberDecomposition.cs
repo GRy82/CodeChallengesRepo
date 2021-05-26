@@ -10,7 +10,7 @@ namespace CodeChallenges
 
         public static string Factors(int lst)
         {
-            if (lst < 1) return "No Bueno!";
+            if (lst <= 1) return "You did not enter valid input.";
 
             return Factors(lst, new StringBuilder(""), 2).ToString();
         }
