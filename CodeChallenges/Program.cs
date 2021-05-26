@@ -9,10 +9,12 @@ namespace CodeChallenges
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(TitleCaseChallenge.TitleCase("of mice And men", "a of an the to and"));
+            Console.WriteLine(PrimeNumberDecomposition.IsPrime(27));
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();
+
+
         }
     }
 }
