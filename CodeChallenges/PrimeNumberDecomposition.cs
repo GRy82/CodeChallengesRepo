@@ -6,7 +6,7 @@ namespace CodeChallenges
 {
     public class PrimeNumberDecomposition
     {
-        public static HashSet<int> primeNums = new HashSet<int> { 2, 3, 5, 7, 11, 13, 17, 23, 29 };
+        public static List<int> primeNums = new List<int> { 2, 3, 5, 7, 11, 13, 17, 23, 29 };
 
         public static string Factors(int lst)
         {
@@ -38,9 +38,14 @@ namespace CodeChallenges
 
         public static int NextPrimeFactor(int attemptedFactor)
         {
+            int index;
+            index = primeNums.IndexOf(attemptedFactor);
             do
             {
-                attemptedFactor++;
+                if (index < primeNums.Count - 1)
+                    attemptedFactor = primeNums[++index];
+                else
+                    attemptedFactor++;
             } while (!IsPrime(attemptedFactor));
 
             return attemptedFactor;
