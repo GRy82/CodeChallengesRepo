@@ -9,7 +9,7 @@ namespace CodeChallenges
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(PrimeNumberDecomposition.IsPrime(27));
+            Console.WriteLine(PrimeNumberDecomposition.Factors(86240));
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();

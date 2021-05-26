@@ -6,26 +6,44 @@ namespace CodeChallenges
 {
     public class PrimeNumberDecomposition
     {
+        public static HashSet<int> primeNums = new HashSet<int> { 2, 3, 5, 7, 11, 13, 17, 23, 29 };
 
-        public static HashSet<int> primeNums = new HashSet<int> { };
         public static string Factors(int lst)
         {
-            if (lst < 1) return "You must enter a number greater than '1'";
+            if (lst < 1) return "No Bueno!";
 
-            return HighestPrimeFactor(lst, new StringBuilder(""));
+            return Factors(lst, new StringBuilder(""), 2).ToString();
         }
 
-        public static string HighestPrimeFactor(int lst, StringBuilder currentString)
+        public static StringBuilder Factors(int lst, StringBuilder currentString, int attemptedFactor)
         {
-            //int nextPrimeFactor = GetNextPrimeFactor();
-            return "";
+            if (IsPrime(lst))         
+                return currentString.Append("(").Append(lst).Append(")");
+
+            int consecutiveFactorCount = 0;
+            while (lst % attemptedFactor == 0)
+            {
+                consecutiveFactorCount++;
+                lst /= attemptedFactor;
+            }
+
+            if (consecutiveFactorCount == 1)
+                currentString.Append("(").Append(attemptedFactor).Append(")");
+            if(consecutiveFactorCount > 1)
+                currentString.Append("(").Append(attemptedFactor).Append("**").
+                    Append(consecutiveFactorCount).Append(")");
+
+            return Factors(lst, currentString, NextPrimeFactor(attemptedFactor));
         }
 
-        public int GetnextPrimeFactor(int number)
+        public static int NextPrimeFactor(int attemptedFactor)
         {
+            do
+            {
+                attemptedFactor++;
+            } while (!IsPrime(attemptedFactor));
 
-            return 4;
-            
+            return attemptedFactor;
         }
 
         public static bool IsPrime(int number)
@@ -38,12 +56,12 @@ namespace CodeChallenges
 
             while (attemptedFactor > lowestPossibleFactor)
             {
-                if (number % attemptedFactor == 0)
+                if (number % attemptedFactor == 0) 
                     return false;
                 attemptedFactor--;
             }
 
-            primeNums.Add(number);
+            primeNums.Add(attemptedFactor);
             return true;
         }
     }
