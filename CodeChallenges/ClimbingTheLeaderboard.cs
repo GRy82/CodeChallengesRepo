@@ -4,8 +4,25 @@ using System.Collections;
 using System.Text;
 using System.Linq;
 
+    // An arcade game player wants to climb to the top of the leaderboard and track their ranking.The game uses Dense Ranking,
+    // so its leaderboard works like this:
+
+    // The player with the highest score is ranked number  on the leaderboard.
+
+    // Players who have equal scores receive the same ranking number, and the next player(s) receive the immediately following
+    // ranking number.
+
+    // climbingLeaderboard has the following parameter(s) :
+    // - int player[n]: the leaderboard scores
+    // - int player[m]: the player's scores
+
+    // Returns:
+    // int[m]: the player's rank after each new score
+
 namespace CodeChallenges
 {
+
+
     public static class ClimbingTheLeaderboard
     {
         public static List<int> ClimbingLeaderboard(List<int> ranked, List<int> player)
