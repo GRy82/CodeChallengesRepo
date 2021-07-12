@@ -23,9 +23,9 @@ namespace CodeChallenges
 {
 
 
-    public static class ClimbingTheLeaderboard
+    public class ClimbingTheLeaderboard
     {
-        public static List<int> ClimbingLeaderboard(List<int> ranked, List<int> player)
+        public List<int> ClimbingLeaderboard(List<int> ranked, List<int> player)
         {
             List<int> playerRanks = new List<int>();
             IEnumerable<int> distinctScores = ranked.Distinct();

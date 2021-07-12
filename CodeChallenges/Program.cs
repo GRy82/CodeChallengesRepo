@@ -11,9 +11,15 @@ namespace CodeChallenges
         { 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(ClimbingTheLeaderboard.ClimbingLeaderboard(new List<int> { 
+            ClimbingTheLeaderboard climbingLeaderboard = new ClimbingTheLeaderboard();
+            List<int> ranks = climbingLeaderboard.ClimbingLeaderboard(new List<int> {
                 100, 90, 90, 80, 75, 60
-            }, 
+            },
+            new List<int> {
+                50, 65, 77, 90, 102
+            });
+            foreach(var rank in ranks)
+                Console.WriteLine(rank);
             new List<int> { 
                 50, 65, 77, 90, 102
             }));
