@@ -11,7 +11,7 @@ namespace CodeChallenges
         { 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(MovieDays.Reverse(210));
+            Console.WriteLine(FindDigits.findDigits(1024));
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();
