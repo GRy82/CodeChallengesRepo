@@ -19,15 +19,15 @@ namespace CodeChallenges
         static int jumpingOnClouds(int[] cloudArray, int jumpLength)
         {
             int index = 0;
-            bool firstJumpPerformed = false;
             int energyRemaining = 100;
-            while (index != 0 || !firstJumpPerformed)
+
+            do
             {
-                firstJumpPerformed = true;
+                index = (index + jumpLength) % cloudArray.Length;
                 energyRemaining -= 1;
                 if (cloudArray[index] == 1) energyRemaining -= 2;
-                index = (index + jumpLength) % cloudArray.Length;
-            }
+            } while (index != 0);
+
             return energyRemaining; 
         }
     }
