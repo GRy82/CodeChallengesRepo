@@ -11,7 +11,7 @@ namespace CodeChallenges
         { 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(FindDigits.findDigits(1024));
+            Console.WriteLine(AppendAndDelete.appendAndDelete("qwerasdf", "qwerbsdf", 6)); 
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();
