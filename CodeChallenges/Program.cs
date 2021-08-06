@@ -11,8 +11,7 @@ namespace CodeChallenges
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            var stickQtys = CutTheSticks.cutTheSticks(new List<int>() { 5, 4, 4, 2, 2, 8 });
-            foreach (var qty in stickQtys) Console.WriteLine(qty);
+            Console.WriteLine(NonDivisibleSubset.nonDivisibleSubset(7, new List<int> { 278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436 }));
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();
