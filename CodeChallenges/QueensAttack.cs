@@ -66,10 +66,10 @@ namespace CodeChallenges
         static int getDirectionalIndex(int queenRow, int queenColumn, int obstacleRow, int obstacleColumn)
         {
             if (queenColumn == obstacleColumn)
-                if (obstacleColumn - queenColumn > 0) return 0;
+                if (obstacleRow - queenRow > 0) return 0;
                 else return 4;
             if (queenRow == obstacleRow)
-                if (obstacleRow - queenRow > 0) return 2;
+                if (obstacleColumn - queenColumn > 0) return 2;
                 else return 6;
             if (queenRow - obstacleRow > 0 && queenColumn - obstacleColumn > 0) 
                 return 5;
