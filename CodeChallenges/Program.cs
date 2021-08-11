@@ -11,7 +11,7 @@ namespace CodeChallenges
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine(EqualizeArray.EqualizeTheArray(new List<int> { 3, 3, 2, 1, 3 }));
+            Console.WriteLine(QueensAttack.queensAttack(4, 0, 4, 4, new List<List<int>> { }));
             stopwatch.Stop();
             Console.WriteLine(stopwatch.ElapsedMilliseconds + " ms elapsed.");
             Console.ReadLine();
