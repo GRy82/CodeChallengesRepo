@@ -12,7 +12,8 @@ namespace CodeChallenges
         {
             // for each direction that the queen can move(8 directions), a distance of closest obstacle will be identified.
             // otherwise null.
-            int[] distanceOfClosestObstacles = setArray(boardDimension, queensRow, queensColumn);
+            //int[] distanceOfClosestObstacles = setArray(boardDimension, queensRow, queensColumn);
+            Dictionary<string, int> distanceOfClosestObstacles = setDict(boardDimension, queensRow, queensColumn);
 
             foreach(var obstacle in obstacles)
             {
@@ -23,38 +24,38 @@ namespace CodeChallenges
                     continue;
                 
                 // is in line of attack of the queen. Find out which direction it is. 
-                int index = getDirectionalIndex(queensRow, queensColumn, obstacle[0], obstacle[1]);
+                var direction = getDirectionalKey(queensRow, queensColumn, obstacle[0], obstacle[1]);
                 int obstacleDistance = queensRow != obstacle[0] ? 
                     getDistance(queensRow, obstacle[0]) : getDistance(queensColumn, obstacle[1]);
                 // if obstacleDistance is shorter than current value in array, then replace the value in the array.
-                if (distanceOfClosestObstacles[index] == 0 || obstacleDistance < distanceOfClosestObstacles[index])
-                    distanceOfClosestObstacles[index] = obstacleDistance;    
+                if (distanceOfClosestObstacles[direction] == 0 || obstacleDistance < distanceOfClosestObstacles[direction])
+                    distanceOfClosestObstacles[direction] = obstacleDistance;    
             }
 
             int unobstructedMovableSpaces = 0;
-            for (int i = 0; i < distanceOfClosestObstacles.Length; i++)
+            foreach (var key in distanceOfClosestObstacles.Keys)
             {
-                unobstructedMovableSpaces += distanceOfClosestObstacles[i];
+                unobstructedMovableSpaces += distanceOfClosestObstacles[key];
             }
 
             return unobstructedMovableSpaces;
         }
 
-        static int[] setArray(int boardDimension, int queensRow, int queensColumn)
+        static Dictionary<string, int> setDict(int boardDimension, int queensRow, int queensColumn)
         {
-            int[] array = new int[8];
-            array[0] = boardDimension - queensRow;
-            array[1] = queensColumn > queensRow ? boardDimension - queensColumn : boardDimension - queensRow;
-            array[2] = boardDimension - queensColumn;
-            array[3] = queensColumn + queensRow > boardDimension
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict["N"] = boardDimension - queensRow;
+            dict["NE"] = queensColumn > queensRow ? boardDimension - queensColumn : boardDimension - queensRow;
+            dict["E"] = boardDimension - queensColumn;
+            dict["SE"] = queensColumn + queensRow > boardDimension
                 ? boardDimension - queensColumn : queensRow - 1;            
-            array[4] = queensRow - 1;
-            array[5] = queensRow > queensColumn ? queensColumn - 1 : queensRow - 1;
-            array[6] = queensColumn - 1;
-            array[7] = queensColumn + queensRow > boardDimension
+            dict["S"] = queensRow - 1;
+            dict["SW"] = queensRow > queensColumn ? queensColumn - 1 : queensRow - 1;
+            dict["W"] = queensColumn - 1;
+            dict["NW"] = queensColumn + queensRow > boardDimension
                 ? boardDimension - queensRow : queensColumn - 1; 
 
-            return array;
+            return dict;
         }
 
         static int getDistance(int queenCoord, int obstacleCoord)
@@ -63,23 +64,23 @@ namespace CodeChallenges
         }
         
 
-        static int getDirectionalIndex(int queenRow, int queenColumn, int obstacleRow, int obstacleColumn)
+        static string getDirectionalKey(int queenRow, int queenColumn, int obstacleRow, int obstacleColumn)
         {
             if (queenColumn == obstacleColumn)
-                if (obstacleRow - queenRow > 0) return 0;
-                else return 4;
+                if (obstacleRow - queenRow > 0) return "N";
+                else return "S";
             if (queenRow == obstacleRow)
-                if (obstacleColumn - queenColumn > 0) return 2;
-                else return 6;
+                if (obstacleColumn - queenColumn > 0) return "E";
+                else return "W";
             if (queenRow - obstacleRow > 0 && queenColumn - obstacleColumn > 0) 
-                return 5;
+                return "SW";
             if (queenRow - obstacleRow < 0 && queenColumn - obstacleColumn < 0) 
-                return 1;
+                return "NE";
             if (queenRow - obstacleRow > 0 && queenColumn - obstacleColumn < 0) 
-                return 7;
+                return "NW";
             
             // default/left over direction
-            return 3;
+            return "SE";
         }
     }
 }
