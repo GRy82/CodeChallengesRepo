@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CodeChallenges
 {
-    class QueensAttack
+    public class QueensAttack
     {
         public static int queensAttack(int boardDimension, int obstacleCount, int queensRow, int queensColumn, 
             List<List<int>> obstacles)//obstacles.Count = obstacleCount. obstacles is a list of lists, each of Count = 2,
